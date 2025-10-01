@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent {
+  label 'server1'
+}
+// this is agent
 
     environment {
         GIT_REPO = 'https://github.com/rehan0022/tech.git'
