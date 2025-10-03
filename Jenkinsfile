@@ -1,8 +1,9 @@
 pipeline {
     agent { label 'server1' }
 
+    // Use the exact Maven tool name configured in Jenkins
     tools {
-    maven 'maven 3.9'  // MUST match exact name in Jenkins Tools
+        maven 'maven 3.9.11'
     }
 
     environment {
@@ -13,6 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo "Cloning repository ${GIT_REPO} (branch: ${GIT_BRANCH})"
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
             }
         }
@@ -40,7 +42,11 @@ pipeline {
     }
 
     post {
-        success { echo '✅ Pipeline completed successfully!' }
-        failure { echo '❌ Pipeline failed. Please check the logs.' }
+        success {
+            echo '✅ Pipeline completed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check the console logs for details.'
+        }
     }
 }
