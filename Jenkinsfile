@@ -1,5 +1,9 @@
 pipeline {
-    agent any   // Or use: agent { label 'server1' }
+    agent { label 'server1' }
+
+    tools {
+        maven 'Maven-3.9.9'   // must match the name in Jenkins Tools
+    }
 
     environment {
         GIT_REPO   = 'https://github.com/rehan0022/tech.git'
@@ -36,11 +40,7 @@ pipeline {
     }
 
     post {
-        success {
-            echo '✅ Pipeline completed successfully!'
-        }
-        failure {
-            echo '❌ Pipeline failed. Please check the logs.'
-        }
+        success { echo '✅ Pipeline completed successfully!' }
+        failure { echo '❌ Pipeline failed. Please check the logs.' }
     }
 }
