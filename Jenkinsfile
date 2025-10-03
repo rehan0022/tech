@@ -2,7 +2,7 @@ pipeline {
     agent { label 'server1' }
 
     tools {
-        maven 'Maven-3.9'   // must match the name in Jenkins Tools
+        maven 'Maven-3.9.11'   // must match the name in Jenkins Tools
     }
 
     environment {
