@@ -7,8 +7,9 @@ pipeline {
     }
 
     environment {
-        GIT_REPO   = 'https://github.com/rehan0022/tech.git'
+         GIT_REPO = 'https://github.com/rehan0022/tech.git'
         GIT_BRANCH = 'main'
+        MAVEN_OPTS = '-Dmaven.repo.local=$WORKSPACE/.m2/repository
     }
 
     stages {
